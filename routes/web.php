@@ -4,6 +4,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,25 @@ Route::get('/', function () { // public access
     return view('home');
 })->name('HomePage');
 
+Route::get('/gallery', function () { // public access
+    return view('gallery');
+})->name('GalleryPage');
+
+Route::get('/contacts', function () { // public access
+    return view('contact');
+})->name('ContactPage');
+
+Route::get('/abouts', function () { // public access
+    return view('about');
+})->name('AboutPage');
+
+Route::get('/search', [BookingController::class, 'search']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LogoutController::class, 'logout'])->name('Logout');
+    Route::prefix('/bookings')->group(function () {
+        Route::get('/', [BookingController::class, 'show'])->name('BookingPage');
+    });
 });
 
 Route::middleware('auth.guest')->group(function () {

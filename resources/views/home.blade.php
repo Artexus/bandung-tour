@@ -1,17 +1,5 @@
 @extends('layout.layout')
 
-
-@section('import')
-    <!-- fonts -->
-    <link rel="stylesheet" href="{{ asset('font/fonts.css') }}">
-    <!-- normalize css -->
-    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
-    <!-- custom css -->
-    <link rel="stylesheet" href="{{ asset('css/utility.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-@endsection
-
 @section('content')
     <!-- header -->
     <header class="flex">
@@ -22,9 +10,7 @@
                     daerah Bandung.</p>
             </div>
     </header>
-    <!-- header -->
 
-    <!-- featured section -->
     <section id="featured" class="py-4">
         <div class="container">
             <div class="title-wrap">

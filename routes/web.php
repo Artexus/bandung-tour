@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,13 +35,13 @@ Route::get('/abouts', function () { // public access
     return view('about');
 })->name('AboutPage');
 
-Route::get('/search', [BookingController::class, 'search']);
-
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LogoutController::class, 'logout'])->name('Logout');
     Route::prefix('/bookings')->group(function () {
         Route::get('/', [BookingController::class, 'show'])->name('BookingPage');
     });
+    Route::post('/cart', [CartController::class, 'addCart'])->name('AddCart');
+    Route::delete('/cart', [CartController::class, 'deleteCart'])->name('DeleteCart');
 });
 
 Route::middleware('auth.guest')->group(function () {

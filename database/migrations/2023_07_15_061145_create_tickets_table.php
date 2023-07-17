@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->references('id')->on('users');
-            $table->integer('ticket_id')->references('id')->on('tickets');
-            $table->integer('quantity');
+            $table->integer('site_id')->references('sites')->on('id');
+            $table->string('name');
+            $table->float('price');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now());
             $table->softDeletes();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('tickets');
     }
 };

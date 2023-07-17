@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('path');
             $table->integer('total_votes');
             $table->float('average_rating');
-            $table->float('price');
             $table->timestamp('created_at')->default(now());
             $table->timestamp('updated_at')->default(now());
             $table->softDeletes();

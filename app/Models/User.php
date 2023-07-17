@@ -29,4 +29,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(ForgotToken::class, 'user_id');
     }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'user_id');
+    }
 }

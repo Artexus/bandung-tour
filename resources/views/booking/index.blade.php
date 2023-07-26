@@ -97,7 +97,7 @@
                         <img src={{ asset($cart->tickets->sites->path) }} alt="" style="width:86px; height:86px">
                         <div style="padding-left:10px; width:180px">
                             <b>
-                                {{ $cart->tickets->sites->location_name }}
+                                {{ $cart->tickets->sites->location_name . ' - ' . ucfirst($cart->tickets->name) }}
                             </b>
                             <p>
                                 {{ $cart->quantity }} x IDR. {{ $cart->tickets->price }}
@@ -125,11 +125,14 @@
 
 
             @if (count($carts) > 0)
-                <div class="flex" style="padding: 5% 0;">
-                    <div class="wrap">
-                        <input type="submit" value="Checkout" class="button">
+                <form action={{ route('Checkout') }} method="POST" target="_blank">
+                    @csrf
+                    <div class="flex" style="padding: 5% 0;">
+                        <div class="wrap">
+                            <input type="submit" value="Checkout" class="button">
+                        </div>
                     </div>
-                </div>
+                </form>
             @endif
 
         </div>

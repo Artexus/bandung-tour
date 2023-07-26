@@ -26,11 +26,19 @@ class CartController extends Controller
         }
 
         $ticket_id = Crypt::decrypt($req['ticket_id']);
-        Cart::create([
-            "user_id" => Auth::user()->id,
-            "ticket_id" => $ticket_id,
-            "quantity" => $req["quantity"]
-        ]);
+        $cart = Cart::where('user_id', Auth::user()->id)->where('ticket_id', $ticket_id)->where('deleted_at', null)->first();
+        if ($cart) {
+            $cart->update([
+                "quantity" => $cart->quantity + $req["quantity"]
+            ]);
+        } else {
+            Cart::create([
+                "user_id" => Auth::user()->id,
+                "ticket_id" => $ticket_id,
+                "quantity" => $req["quantity"]
+            ]);
+        }
+
 
         return redirect()->route('BookingPage');
     }

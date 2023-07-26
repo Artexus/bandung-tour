@@ -18,10 +18,12 @@
 
             <div class="contact-row">
                 <div class="contact-left">
-                    <form class="contact-form">
-                        <input type="text" class="form-control" placeholder="Nama Anda">
-                        <input type="email" class="form-control" placeholder="Email Anda">
-                        <textarea rows="4" class="form-control" placeholder="Pesan Anda" style="resize: none;"></textarea>
+                    <form class="contact-form" action='mailto:bandungtour@gmail.com' id="contact-form">
+                        @csrf
+                        <input type="text" name="name" class="form-control" placeholder="Nama Anda">
+                        <input type="email" name="email"class="form-control" placeholder="Email Anda">
+                        <textarea rows="4" form="contact-form" name="message" class="form-control" placeholder="Pesan Anda"
+                            style="resize: none;"></textarea>
                         <input type="submit" class="btn" value="Kirim Pesan">
                     </form>
                 </div>

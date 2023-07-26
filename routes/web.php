@@ -6,6 +6,9 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +30,13 @@ Route::get('/gallery', function () { // public access
     return view('gallery');
 })->name('GalleryPage');
 
-Route::get('/contacts', function () { // public access
-    return view('contact');
-})->name('ContactPage');
+Route::prefix('/contacts')->group(function () {
+    Route::get('/', function () { // public access
+        return view('contact');
+    })->name('ContactPage');
+
+    Route::post('/', [ContactController::class, 'submit'])->name('SubmitContact');
+});
 
 Route::get('/abouts', function () { // public access
     return view('about');
@@ -40,8 +47,12 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/bookings')->group(function () {
         Route::get('/', [BookingController::class, 'show'])->name('BookingPage');
     });
-    Route::post('/cart', [CartController::class, 'addCart'])->name('AddCart');
-    Route::delete('/cart', [CartController::class, 'deleteCart'])->name('DeleteCart');
+    Route::post('/carts', [CartController::class, 'addCart'])->name('AddCart');
+    Route::delete('/carts', [CartController::class, 'deleteCart'])->name('DeleteCart');
+
+    Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('Checkout');
+
+    Route::get('/transactions', [TransactionController::class, 'showTransaction'])->name('TransactionPage');
 });
 
 Route::middleware('auth.guest')->group(function () {

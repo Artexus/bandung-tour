@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Bandung Tour</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +49,11 @@
                     <li class="nav-item">
                         <a href="{{ route('BookingPage') }}" class="nav-link">Pemesanan</a>
                     </li>
+                    @if (Auth::user())
+                        <li class="nav-item">
+                            <a href="{{ route('TransactionPage') }}" class="nav-link">Pesanan Saya</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a href={{ route('AboutPage') }} class="nav-link">Tentang Kami</a>
                     </li>

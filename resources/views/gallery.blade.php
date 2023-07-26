@@ -108,7 +108,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;10K Reviews</li>
                     </ul>
-                    <p class="text-justify">Gedung Sate adalah gedung yang memiliki kesan sejarah sangat kuat bagi
+                    <p class="text-justify" style="width:85%">Gedung Sate adalah gedung yang memiliki kesan sejarah
+                        sangat kuat bagi
                         masyarakat Bandung & Indonesia. Gedung ini menjadi simbol kejayaan arsitektur Hindia-Belanda.</p>
                 </div>
             </div>
@@ -125,7 +126,8 @@
                         <li><i class="fas fa-star-half-alt"></i></li>
                         <li>&nbsp;9,5K Reviews</li>
                     </ul>
-                    <p class="text-justify">Tangkuban Perahu adalah gunung berapi aktif. Keindahan alamnya yang indah
+                    <p class="text-justify" style="width:85%">Tangkuban Perahu adalah gunung berapi aktif. Keindahan alamnya
+                        yang indah
                         contohnya seperti danau & kawah di puncak gunung.</p>
                 </div>
             </div>
@@ -141,7 +143,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;9K Reviews</li>
                     </ul>
-                    <p class="text-justify">Kawah Putih dahulu tempat pabrik belerang masa kolonial Belanda yang bernama
+                    <p class="text-justify" style="width:85%">Kawah Putih dahulu tempat pabrik belerang masa kolonial
+                        Belanda yang bernama
                         Zwavel Ontgining. Kawah putih adalah danau yang terbentuk akibat letusan Gunung Patuha.</p>
                 </div>
             </div>
@@ -156,7 +159,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;7K Reviews</li>
                     </ul>
-                    <p class="text-justify">Lembang Park & Zoo adalah tempat wisata kebun binatang & wahana permainan area
+                    <p class="text-justify" style="width:85%">Lembang Park & Zoo adalah tempat wisata kebun binatang &
+                        wahana permainan area
                         keluarga.</p>
                 </div>
             </div>
@@ -172,7 +176,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;8K Reviews</li>
                     </ul>
-                    <p class="text-justify">Farm House adalah tempat wisata dengan konsep pedesaan Eropa dengan berbagai
+                    <p class="text-justify" style="width:85%">Farm House adalah tempat wisata dengan konsep pedesaan Eropa
+                        dengan berbagai
                         fasilitas menarik seperti Kebun Binatang Mini, Kolam Ikan & Taman Bunga.</p>
                 </div>
             </div>
@@ -187,7 +192,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;5K Reviews</li>
                     </ul>
-                    <p class="text-justify">Floating Market adalah tempat kuliner makanan & minuman tradisional terapung di
+                    <p class="text-justify" style="width:85%">Floating Market adalah tempat kuliner makanan & minuman
+                        tradisional terapung di
                         dalam kapal serta melihat suasana alam yang indah.</p>
                 </div>
             </div>
@@ -203,7 +209,8 @@
                         <li><i class="fas fa-star-half-alt"></i></li>
                         <li>&nbsp;4K Reviews</li>
                     </ul>
-                    <p class="text-justify">Orchid Forest adalah Taman yang memiliki koleksi orchid & menyediakan berbagai
+                    <p class="text-justify"style="width:85%">Orchid Forest adalah Taman yang memiliki koleksi orchid &
+                        menyediakan berbagai
                         fasilitas rekreasi.</p>
                 </div>
             </div>
@@ -218,7 +225,8 @@
                         <li><i class="fas fa-star"></i></li>
                         <li>&nbsp;3K Reviewss</li>
                     </ul>
-                    <p class="text-justify">Taman Wisata Bougenville adalah pengunjung bisa melihat tempat bunga
+                    <p class="text-justify" style="width:85%">Taman Wisata Bougenville adalah pengunjung bisa melihat
+                        tempat bunga
                         bougenville
                         bermekaran, Terdapat tempat kuliner makanan & tempat wisata permainan anak-anak.</p>
                 </div>

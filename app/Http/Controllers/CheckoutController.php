@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-
-
-
+use Twilio\Rest\Client;
 
 class CheckoutController extends Controller
 {
     public function checkout(Request $req)
     {
+        $phoneNumber = $req["phone_number"];
         $carts = Cart::where('user_id', Auth::user()->id)->where('deleted_at', null)->get();
         $totalAmount = 0;
         foreach ($carts as $cart) {
@@ -80,8 +79,10 @@ class CheckoutController extends Controller
                 "total_amount" => $totalAmount,
                 "user_id" => Auth::user()->id,
                 "email" => Auth::user()->email,
+                "phone_number" => isset($phoneNumber) ? ltrim($phoneNumber, "0")  : "",
                 "contents" => $contents,
             );
+
             Transaction::create([
                 "invoice_id" => $externalID,
                 "user_id" => Auth::user()->id,
@@ -117,9 +118,28 @@ class CheckoutController extends Controller
             Cart::where('user_id', $transaction->user_id)->update([
                 "deleted_at" => Carbon::now()
             ]);
+
+            $payload = json_decode($transaction->payload);
+            if ($payload->phone_number != "") {
+                // send to WA
+                $this->sendInvoice($transaction);
+            }
         }
 
 
         return response()->json([]);
+    }
+
+    private function sendInvoice(Transaction $transaction)
+    {
+        $payload  = json_decode($transaction->payload);
+        $sid    = config('services.twilio.sid');
+        $token  = config('services.twilio.token');
+        $wa_from = config('services.twilio.whatsapp_from');
+        $twilio = new Client($sid, $token);
+
+        $body = "Pembelian dengan invoice id " . $transaction->invoice_id . " sudah berhasil dilakukan. Silahkan cek lebih detilnya pada website kami. Terimakasih";
+
+        return $twilio->messages->create("whatsapp:+62$payload->phone_number", ["from" => "whatsapp:$wa_from", "body" => $body]);
     }
 }

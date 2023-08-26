@@ -96,141 +96,33 @@
         </div>
 
         <div class="popular-row">
-            <div class="popular-item shadow">
-                <img src={{ asset('images/popular-1.jpg') }} alt="">
-                <div>
-                    <span>Gedung Sate, Citarum, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;10K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Gedung Sate adalah gedung yang memiliki kesan sejarah
-                        sangat kuat bagi
-                        masyarakat Bandung & Indonesia. Gedung ini menjadi simbol kejayaan arsitektur Hindia-Belanda.</p>
-                </div>
-            </div>
 
-            <div class="popular-item shadow">
-                <img src="images/popular-2.jpg" alt="">
-                <div>
-                    <span>Tangkuban Perahu, Lembang, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star-half-alt"></i></li>
-                        <li>&nbsp;9,5K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Tangkuban Perahu adalah gunung berapi aktif. Keindahan alamnya
-                        yang indah
-                        contohnya seperti danau & kawah di puncak gunung.</p>
-                </div>
-            </div>
+            @foreach ($sites as $site)
+                <div class="popular-item shadow">
+                    <img src={{ asset($site->path) }} alt="">
+                    <div>
+                        <span>{{ $site->location_name }}</span>
+                        <ul class="rating flex">
+                            @for ($i = 0; $i < (int) $site->average_rating; $i++)
+                                <li><i class="fas fa-star"></i></li>
+                            @endfor
+                            @if ($site->average_rating % (int) $site->average_rating > 0)
+                                <li><i class="fas fa-star-half-alt"></i></li>
+                            @endif
 
-            <div class="popular-item shadow">
-                <img src="images/popular-3.jpg" alt="">
-                <div>
-                    <span>Kawah Putih, Ciwidey, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;9K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Kawah Putih dahulu tempat pabrik belerang masa kolonial
-                        Belanda yang bernama
-                        Zwavel Ontgining. Kawah putih adalah danau yang terbentuk akibat letusan Gunung Patuha.</p>
-                </div>
-            </div>
+                            @if ($site->total_votes >= 1000)
+                                <li>&nbsp;{{ $site->total_votes / 1000 }}K Reviews</li>
+                            @else
+                                <li>&nbsp;{{ $site->total_votes }} Reviews</li>
+                            @endif
 
-            <div class="popular-item shadow">
-                <img src="images/popular-4.jpg" alt="">
-                <div>
-                    <span>Lembang Park & Zoo, Lembang, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;7K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Lembang Park & Zoo adalah tempat wisata kebun binatang &
-                        wahana permainan area
-                        keluarga.</p>
+                        </ul>
+                        <p class="text-justify" style="width:85%">
+                            {{ $site->description }}
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="popular-item shadow">
-                <img src="images/popular-5.jpg" alt="">
-                <div>
-                    <span>Farm House, Lembang, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;8K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Farm House adalah tempat wisata dengan konsep pedesaan Eropa
-                        dengan berbagai
-                        fasilitas menarik seperti Kebun Binatang Mini, Kolam Ikan & Taman Bunga.</p>
-                </div>
-            </div>
-
-            <div class="popular-item shadow">
-                <img src="images/popular-6.jpg" alt="">
-                <div>
-                    <span>Floating Market, Lembang, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;5K Reviews</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Floating Market adalah tempat kuliner makanan & minuman
-                        tradisional terapung di
-                        dalam kapal serta melihat suasana alam yang indah.</p>
-                </div>
-            </div>
-
-            <div class="popular-item shadow">
-                <img src="images/popular-7.jpg" alt="">
-                <div>
-                    <span>Orchid Forest, Cikole, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star-half-alt"></i></li>
-                        <li>&nbsp;4K Reviews</li>
-                    </ul>
-                    <p class="text-justify"style="width:85%">Orchid Forest adalah Taman yang memiliki koleksi orchid &
-                        menyediakan berbagai
-                        fasilitas rekreasi.</p>
-                </div>
-            </div>
-
-            <div class="popular-item shadow">
-                <img src="images/popular-9.jpg" alt="">
-                <div>
-                    <span>Taman Wisata Bougenville, Cimaung, Indonesia</span>
-                    <ul class="rating flex">
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li><i class="fas fa-star"></i></li>
-                        <li>&nbsp;3K Reviewss</li>
-                    </ul>
-                    <p class="text-justify" style="width:85%">Taman Wisata Bougenville adalah pengunjung bisa melihat
-                        tempat bunga
-                        bougenville
-                        bermekaran, Terdapat tempat kuliner makanan & tempat wisata permainan anak-anak.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
     <!-- end of popular places section -->

@@ -10,8 +10,7 @@
 
 
 @section('content')
-    <div class="d-flex container-fluid align-items-center justify-content-center"
-        style="border:solid 1px; height:100vh; background: white">
+    <div class="d-flex container-fluid align-items-center justify-content-center" style="border:solid 1px; height:100vh;">
         <div class="card text-center p-5 w-50 justify-content-center" style="height: 75%">
             <div class="d-flex align-items-center justify-content-center card-body">
                 <div class="w-75">
@@ -25,13 +24,13 @@
                         <path
                             d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
                     </svg>
-                    <h1 class="card-title">Success !</h1>
+                    <h1 class="card-title">Sukses !</h1>
 
-                    <h6 class="card-subtitle mb-2 text-body-secondary">You Have Successfully Create a New Password </h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">Kamu Berhasil Membuat Password Baru</h6>
                     <div class="pt-5">
 
                         <a href="{{ route('LoginPage') }}" class="mt-5 btn btn-lg btn-outline-dark w-100">
-                            <i class="fa fa-arrow-left pe-2" aria-hidden="true"></i>Back to Login </a>
+                            <i class="fa fa-arrow-left pe-2" aria-hidden="true"></i>Balik ke Login </a>
 
                     </div>
                 </div>

@@ -127,6 +127,19 @@
             @if (count($carts) > 0)
                 <form action={{ route('Checkout') }} method="POST" target="_blank">
                     @csrf
+                    <div>
+                        <div class="wrap">
+                            <div style="width: 30%">
+                                <h3>
+                                    Pengiriman Invoice (Optional)
+                                </h3>
+                                <input type="text" id="search-bar" name="phone_number" placeholder="Nomor Telepon">
+                                <p style="color: gray; font-size: 12px">Bukti pembayaran atas pembelian anda dikirimkan ke
+                                    whatsapp anda</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="flex" style="padding: 5% 0;">
                         <div class="wrap">
                             <input type="submit" value="Checkout" class="button">

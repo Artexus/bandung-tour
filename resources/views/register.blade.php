@@ -11,18 +11,19 @@
 
 @section('content')
     <!-- header -->
+
     <div class="d-flex align-items-center justify-content-center w-100" style="height:100vh;">
         <div class="w-75 h-75"
-            style="color:white; display:inherit; border-radius:30px; border:1px solid; border-color: gray; background-color:rgb(51, 51, 51)">
+            style="color:white; display:inherit; border-radius:30px; border:1px solid; border-color: gray;">
             <div
-                style="width:65%; height:100%; display:inherit; align-items:center; justify-content:center; display:inherit ">
+                style="border-top-left-radius: 30px; border-bottom-left-radius: 30px; background-color:rgba(218, 219, 219, 0.205); width:65%; height:100%; display:inherit; align-items:center; justify-content:center; display:inherit ">
                 <div style="text-align: center">
-                    <h1>Register an Account</h1>
+                    <h1>Daftar Akun Baru </h1>
                     <form action="{{ route('SubmitRegister') }}" method="POST" style="display: inline">
                         @csrf
                         <div class="form-floating mt-5">
                             <input type="text" class="form-control" id="floatingName" name="name" placeholder="Name">
-                            <label style="color:gray" for="floatingName">Name</label>
+                            <label style="color:gray" for="floatingName">Nama</label>
                         </div>
 
                         <div class="form-floating mt-3">
@@ -51,8 +52,8 @@
             <div
                 style="width:35%; height:100%; border-radius:0px 30px 30px 0px;background: white; display:inherit; align-items:center; justify-content:center; display:inherit ">
                 <div style="text-align: center; color:black">
-                    <h1>Already Have an Account?</h1>
-                    <h4 class="card-text">Hurry Up and Sign In Here</h4>
+                    <h1>Sudah Memiliki Akun?</h1>
+                    <h4 class="card-text">Ayo Cepat Sign in Disini</h4>
 
                     <a href="{{ route('LoginPage') }}" class="text-decoration-none mt-5 w-100 btn btn-dark">Sign In</a>
 

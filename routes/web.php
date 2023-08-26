@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +27,7 @@ Route::get('/', function () { // public access
     return view('home');
 })->name('HomePage');
 
-Route::get('/gallery', function () { // public access
-    return view('gallery');
-})->name('GalleryPage');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('GalleryPage');
 
 Route::prefix('/contacts')->group(function () {
     Route::get('/', function () { // public access

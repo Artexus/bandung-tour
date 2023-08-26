@@ -2,7 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Transaction;
+use Carbon\Carbon;
+use DateInterval;
 use Illuminate\Console\Command;
+use Illuminate\Log\Logger;
+use Illuminate\Support\Facades\Log;
 
 class ExpireTransaction extends Command
 {
@@ -27,10 +32,16 @@ class ExpireTransaction extends Command
      */
     public function handle()
     {
-        $expirationTime = Carbon::now()->subHour();
+        Log::info(Carbon::now());
+        $transactions = Transaction::where('status', 'ON_PROGRESS')->get();
+        foreach ($transactions as $transaction) {
+            $createdAt = Carbon::parse($transaction->created_at);
+            Log::info($createdAt);
+            Log::info(Carbon::now()->between($createdAt, $createdAt->addMinutes(1), true));
 
-        Transaction::where('status', 'ON_PROGRESS')
-            ->where('created_at', '<=', $expirationTime)
-            ->update(['status' => 'FAILED']);
+            if (!Carbon::now()->between($createdAt, $createdAt->addMinutes(1), true)) {
+                Transaction::where('invoice_id', $transaction->invoice_id)->update(['status' => 'FAILED']);
+            }
+        }
     }
 }

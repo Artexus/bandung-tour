@@ -10,12 +10,11 @@
 
 
 @section('content')
-    <div class="d-flex container-fluid align-items-center justify-content-center"
-        style="border:solid 1px; height:100vh; background: white">
+    <div class="d-flex container-fluid align-items-center justify-content-center" style="border:solid 1px; height:100vh;">
         <div class="card text-center p-5 w-50 justify-content-center" style="height: 75%">
             <div class="d-flex align-items-center justify-content-center card-body">
                 <div class="w-75">
-                    <h1 class="card-title">Create your new Password</h1>
+                    <h1 class="card-title">Buat Password Baru</h1>
                     <div class="pt-5">
                         <form action="{{ route('SubmitNewPassword') }}" method="POST">
                             @csrf
@@ -23,13 +22,13 @@
                             <div class="form-floating">
                                 <input type="password" class="form-control" id="floatingInput" name="new_password"
                                     placeholder="Password">
-                                <label for="floatingInput">New Password</label>
+                                <label for="floatingInput">Password Baru</label>
                             </div>
 
                             <div class="mt-4 form-floating">
                                 <input type="password" class="form-control" id="floatingConfirm" name="confirm_password"
                                     placeholder="Password">
-                                <label for="floatingConfirm">Confirm New Password</label>
+                                <label for="floatingConfirm">Konfirmasi Password Baru</label>
                             </div>
 
                             <input type="submit" class="mt-5 btn btn-lg btn-outline-dark w-100">

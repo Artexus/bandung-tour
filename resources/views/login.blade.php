@@ -11,12 +11,13 @@
 
 @section('content')
     <!-- header -->
+
     <div class="d-flex align-items-center justify-content-center w-100" style="height:100vh;">
-        <div class="w-75 h-75" style="display:inherit; border-radius:30px; border:1px solid; border-color: gray;">
+        <div class="w-75 h-75" style="display:inherit; border-radius:30px; border:1px solid; border-color: gray; ">
             <div
-                style="width:65%; height:100%; display:inherit; align-items:center; justify-content:center; display:inherit ">
+                style="width:65%; height:100%; display:inherit; align-items:center; justify-content:center; display:inherit ;background: white">
                 <div style="text-align: center">
-                    <h1>Login to Your Account</h1>
+                    <h1>Masuk ke Akun Kamu</h1>
                     <form action="{{ route('SubmitLogin') }}" method="POST" style="display: inline">
                         @csrf
                         <div class="form-floating mt-5">
@@ -41,21 +42,21 @@
                         </div>
                         <div style="padding: 5% 0% 0% 0%">
                             <a href="{{ route('ForgotPasswordPage') }}"
-                                class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Forgot
-                                Your Password?</a>
+                                class="link-body-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-75-hover">Lupa
+                                Password?</a>
                         </div>
                 </div>
 
             </div>
             <div
-                style="width:35%; height:100%; border-radius:0px 30px 30px 0px;background: rgb(51, 51, 51); display:inherit; align-items:center; justify-content:center; display:inherit ">
+                style="width:35%; height:100%; border-radius:0px 30px 30px 0px;background: rgba(218, 219, 219, 0.2);  display:inherit; align-items:center; justify-content:center; display:inherit ">
                 <div style="text-align: center; color: white">
-                    <h1>New Here?</h1>
-                    <h4 class="card-text">Sign up and discover a great <br>amount of new opportunities!</h4>
+                    <h1>Baru disini?</h1>
+                    <h4 class="card-text">Daftar dan temukan banyak <br>oportunintas baru yang hebat!</h4>
 
 
                     <a class="text-decoration-none mt-5 w-100 btn btn-light" style="color: black"
-                        href="{{ route('RegisterPage') }}">Sign Up</a>
+                        href="{{ route('RegisterPage') }}">Daftar Akun</a>
 
                 </div>
 

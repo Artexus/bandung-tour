@@ -17,7 +17,10 @@
 </head>
 
 <body>
-    @yield('content')
+    <div
+        style=" background-image: url(../images/GunungLembang-Wallpaper.jpg); background-size:cover; background-color: #cccccc; width:100%; height:100%">
+        @yield('content')
+    </div>
 </body>
 
 </html>

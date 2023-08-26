@@ -47,10 +47,9 @@ class TicketSeeder extends Seeder
                     "name" => "dewasa",
                     "price" => 10000,
                 ],
-
                 [
                     "site_id" => 3,
-                    "name" => "anak/dewasa",
+                    "name" => "anak-anak",
                     "price" => 10000,
                 ],
 

@@ -28,6 +28,6 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $req['email'], 'password' => $req['password']])) {
             return redirect()->route('HomePage');
         }
-        return redirect()->back()->withErrors('Wrong password or Email');
+        return redirect()->back()->withErrors('Password dan Email kamu salah');
     }
 }

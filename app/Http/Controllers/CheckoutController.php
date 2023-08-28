@@ -27,17 +27,64 @@ class CheckoutController extends Controller
         $transaction = Transaction::where('user_id', Auth::user()->id)->where('status', "ON_PROGRESS")->where('deleted_at', null)->first();
         if ($transaction) {
             $flag = false;
+            $detail = json_decode($transaction->payload);
             foreach ($carts as $cart) {
-                if ($cart->created_at >= $transaction) {
+                $found = false;
+                foreach ($detail->contents as $content) {
+                    if ($content->ticket_id == $cart->ticket_id) {
+                        $found = true;
+                        if ($content->quantity != $cart->quantity) {
+                            $flag = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!$found || $flag) {
                     $flag = true;
                     break;
                 }
             }
 
             if (!$flag) {
-                $detail = json_decode($transaction->payload);
-                return redirect($detail->checkout_url);
-            } else {
+                // check if there is no contents dropped out from carts.
+                foreach ($detail->contents as $content) {
+                    $found = false;
+                    foreach ($carts as $cart) {
+                        if ($content->ticket_id == $cart->ticket_id) {
+                            $found = true;
+                        }
+                    }
+
+                    if (!$found) {
+                        $flag = true;
+                        break;
+                    }
+                }
+            }
+
+
+            if (!$flag) {
+                // check if the following invoice is already expired
+                try {
+                    $basicAuth = 'Basic ' . base64_encode(env('SECRET_XENDIT_KEY') . ':');
+                    $req = Http::withHeaders([
+                        "Authorization" => $basicAuth,
+                    ])->get("https://api.xendit.co/v2/invoices/" . $detail->external_id);
+
+                    $resp = $req->object();
+                } catch (Exception $e) {
+                    Log::error("apicall error: ", $e->getMessage());
+                }
+
+                if ($resp->status == "EXPIRED") {
+                    $flag = true;
+                } else {
+                    return redirect($detail->checkout_url);
+                }
+            }
+
+            if ($flag) {
                 $transaction->update([
                     "status" => "FAILED",
                     "deleted_at" => Carbon::now(),
@@ -75,6 +122,7 @@ class CheckoutController extends Controller
             }
 
             $detail = array(
+                "external_id" => $resp->external_id,
                 "checkout_url" => $resp->invoice_url,
                 "total_amount" => $totalAmount,
                 "user_id" => Auth::user()->id,

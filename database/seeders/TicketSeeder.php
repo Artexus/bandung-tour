@@ -15,75 +15,27 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tickets')->insert(
-            [
-                [
-                    "site_id" => 1,
+        $x = array();
+        for ($i = 1; $i <= 40; $i++) {
+            if (random_int(1, 10) <= 2) { // 20%
+                array_push($x, [
+                    "site_id" => $i,
+                    "name" => "anak/dewasa",
+                    "price" => random_int(5, 50) * 1000
+                ]);
+            } else {
+                array_push($x, [
+                    "site_id" => $i,
                     "name" => "anak-anak",
-                    "price" => 8000,
-                ],
-                [
-                    "site_id" => 1,
+                    "price" => random_int(2, 10) * 1000
+                ], [
+                    "site_id" => $i,
                     "name" => "dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 2,
-                    "name" => "anak-anak",
-                    "price" => 5000,
-                ],
-                [
-                    "site_id" => 2,
-                    "name" => "dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 3,
-                    "name" => "anak-anak",
-                    "price" => 3000,
-                ],
-                [
-                    "site_id" => 3,
-                    "name" => "dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 3,
-                    "name" => "anak-anak",
-                    "price" => 10000,
-                ],
+                    "price" => random_int(8, 30) * 1000
+                ]);
+            }
+        }
 
-                [
-                    "site_id" => 4,
-                    "name" => "anak/dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 5,
-                    "name" => "anak/dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 6,
-                    "name" => "anak/dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 7,
-                    "name" => "anak/dewasa",
-                    "price" => 10000,
-                ],
-                [
-                    "site_id" => 8,
-                    "name" => "anak",
-                    "price" => 20000,
-                ],
-                [
-                    "site_id" => 8,
-                    "name" => "dewasa",
-                    "price" => 25000,
-                ]
-            ]
-        );
+        DB::table('tickets')->insert($x);
     }
 }
